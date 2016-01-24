@@ -246,6 +246,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\ts\List.cshtml" />
     <Content Include="Views\ts\Index.cshtml" />
+    <Content Include="Views\ts\ListByVolume.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,14 @@
+﻿@model string[]
+@{
+    ViewBag.Title = "ListByVolume";
+}
+
+<h2>ListByVolume</h2>
+<table>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr><td><a href="http://gu.qq.com/@item" target="_blank">@item</a></td></tr>
+        }
+    </tbody>
+</table>
