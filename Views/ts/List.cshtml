@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "List";
+}
+
+<h2>List 111</h2>
+<table>
+    <tbody></tbody>
+</table>
+
+<br />
+<canvas id="minute" width="10" height="30" />
+
+@section scripts{
+
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/ts/tools.js"></script>
+    <script src="~/Scripts/ts/stocks.js"></script>
+    <script src="~/Scripts/ts/Minute.js"></script>
+
+    <script>
+        $(function () {
+
+            for (var i = 0; i < stocks.length; i++) {
+                var code = stocks[i];
+                $.ajax({
+                    type: "GET",
+                    contentType: "application/json",
+                    url: "/ts/MinuteData?code=" + code + "&count=120",
+                    success: function (response) {
+                        var count = -1;
+                        var summary = response;
+                        var hammers = getHammers(summary);
+                        if (hammers) {
+                            count = hammers.length;
+                        }
+                        if (count >= 0 && count <= 2) {
+                            $("tbody").append("<tr><td>" + response.Code + "</td><td>" + count + "</td></tr>");
+                        }
+                    }
+                });
+            }
+
+        });
+    </script>
+}
